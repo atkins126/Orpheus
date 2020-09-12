@@ -1274,7 +1274,7 @@ begin
 
         {report the error}
         if not Controller.ErrorPending then
-          PostMessage(Handle, om_ReportError, FLastError, 0);
+          PostMessage(Handle, OM_REPORTERROR, WPARAM(FLastError), 0);
 
         {set controller's error pending flag}
         Controller.ErrorPending := True;
@@ -2840,7 +2840,9 @@ begin
       on E: EOverflow do
         efRangeHi.rtExt := +1.7e+308;
     end;
-  end;
+  end
+  else if (efDataType mod fcpDivisor) = fsubLongInt then
+    efRangeHi.rtLong := efRangeHi.rtDate;
 {$ENDIF}
 end;
 
@@ -2856,8 +2858,10 @@ begin
     except
       on E: EOverflow do
         efRangeLo.rtExt := -1.7e+308;
-    end;
-  end;
+    end
+  end
+  else if (efDataType mod fcpDivisor) = fsubLongInt then
+    efRangeLo.rtLong := efRangeLo.rtDate;
 {$ENDIF}
 end;
 
@@ -4432,7 +4436,7 @@ begin
   end;
 
   if ReportError and (FLastError <> 0) then
-    PostMessage(Handle, om_ReportError, FLastError, 0);
+    PostMessage(Handle, OM_REPORTERROR, WPARAM(FLastError), 0);
 
   {update invalid flag}
   if FLastError = 0 then
