@@ -22,7 +22,7 @@
 {*                                                                            *}
 {* ***** END LICENSE BLOCK *****                                              *}
 
-PACKAGE OrpheusDBDR;
+PACKAGE OrpheusDBDD;
 
 {$R *.res}
 {$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
@@ -49,38 +49,30 @@ PACKAGE OrpheusDBDR;
 {$IMAGEBASE $400000}
 {$DEFINE RELEASE}
 {$ENDIF IMPLICITBUILDING}
-{$DESCRIPTION 'TurboPack Orpheus Delphi datataware runtime package'}
-{$LIBSUFFIX '280'}
-{$RUNONLY}
+{$DESCRIPTION 'TurboPack Orpheus Delphi datataware designtime package'}
+{$LIBSUFFIX AUTO}
+{$DESIGNONLY}
 {$IMPLICITBUILD OFF}
 
 requires
-  vclx,
-  dbrtl,
-  vcldb,
+  Vcl,
+  designide,
+  OrpheusDBDR,
+  OrpheusDD,
   OrpheusDR;
 
 contains
-  ovcdbae in '..\..\..\source\ovcdbae.pas',
-  ovcdbcal in '..\..\..\source\ovcdbcal.pas',
-  ovcdbccb in '..\..\..\source\ovcdbccb.pas',
-  ovcdbcl in '..\..\..\source\ovcdbcl.pas',
-  ovcdbclk in '..\..\..\source\ovcdbclk.pas',
-  ovcdbdat in '..\..\..\source\ovcdbdat.pas',
-  ovcdbdLb in '..\..\..\source\ovcdbdLb.pas',
-  ovcdbed in '..\..\..\source\ovcdbed.pas',
-  ovcdbfcb in '..\..\..\source\ovcdbfcb.pas',
-  ovcdbmdg in '..\..\..\source\ovcdbmdg.pas' {OvcfrmDbMemoDlg},
-  ovcdbnf in '..\..\..\source\ovcdbnf.pas',
-  ovcdbnum in '..\..\..\source\ovcdbnum.pas',
-  ovcdbpf in '..\..\..\source\ovcdbpf.pas',
-  ovcdbplb in '..\..\..\source\ovcdbplb.pas',
-  ovcdbrpv in '..\..\..\source\ovcdbrpv.pas',
-  ovcdbsed in '..\..\..\source\ovcdbsed.pas',
-  ovcdbsf in '..\..\..\source\ovcdbsf.pas',
-  ovcdbsld in '..\..\..\source\ovcdbsld.pas',
-  ovcdbtbl in '..\..\..\source\ovcdbtbl.pas',
-  ovcdbtim in '..\..\..\source\ovcdbtim.pas',
-  o32dbfe in '..\..\..\source\o32dbfe.pas';
+  ovcdbae0 in '..\..\..\source\ovcdbae0.pas' {OvcfrmDbAeRange},
+  ovcdbae1 in '..\..\..\source\ovcdbae1.pas' {OvcfrmDbAeSimpleMask},
+  ovcdbae2 in '..\..\..\source\ovcdbae2.pas' {OvcfrmDbAePictureMask},
+  ovcdbae3 in '..\..\..\source\ovcdbae3.pas' {OvcfrmDbAeNumericMask},
+  ovcdbtb0 in '..\..\..\source\ovcdbtb0.pas' {OvcfrmDbColEditor},
+  ovcdbtb1 in '..\..\..\source\ovcdbtb1.pas' {OvcfrmProperties},
+  ovcregdb in '..\..\..\source\ovcregdb.pas',
+  ovcdbhll in '..\..\..\source\ovcdbhll.pas',
+  ovcdbise in '..\..\..\source\ovcdbise.pas',
+  OvcDbIdx in '..\..\..\source\OvcDbIdx.pas',
+  ovcdbacb in '..\..\..\source\ovcdbacb.pas',
+  ovcdbtcb in '..\..\..\source\ovcdbtcb.pas';
 
 end.
